@@ -20,9 +20,10 @@
     "url": "https//github.com/mickadam87/mkdm-react-ws-hook.git"
   },
   "keywords": [
-    "flex",
-    "view",
-    "react-native"
+    "websocket",
+    "SocketIO",
+    "react-native",
+    "react"
   ],
   "author": "Mickael Da matha sant'anna",
   "license": "MIT",
