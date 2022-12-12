@@ -2,8 +2,6 @@
 
 ## Description
 
-Library use Async Storage to store strings and objects as persistante data.
-
 ## Basic example
 
 ```javascript
