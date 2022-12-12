@@ -1,6 +1,6 @@
 {
-  "name": "mkdm-react-ws-hook",
-  "version": "1.0.10",
+  "name": "mkdm-react-websocket-hook",
+  "version": "1.0.0",
   "description": "SocketIO WebSocket react Hook",
   "private": false,
   "main": "lib/index.js",
