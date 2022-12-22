@@ -49,6 +49,10 @@ export default function useWebSocket(props: SocketHookProps) {
       });
   };
 
+  const stopListening = async (event: string) => {
+    manager.current?.removeListener(event);
+  };
+
   useEffect(() => {
     connect();
     return () => {
@@ -78,5 +82,6 @@ export default function useWebSocket(props: SocketHookProps) {
     emit,
     listen,
     emitAndListen,
+    stopListening,
   };
 }
