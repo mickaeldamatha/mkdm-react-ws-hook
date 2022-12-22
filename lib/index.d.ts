@@ -1,5 +1,14 @@
-export declare const _storeData: (key: string, value: string) => Promise<void>;
-export declare const _storeJsonData: (key: string, jsonValue: object) => Promise<void>;
-export declare const _retrieveData: (key: string) => Promise<string | null>;
-export declare const _retrieveJsonData: (key: string) => Promise<any>;
-export declare const _removeData: (key: string) => Promise<void | null>;
+import { Socket } from "socket.io-client";
+interface SocketHookProps {
+    url: string;
+    socketServerPath: string;
+    stateUpdateCallback: (message: any) => void;
+    corsOrigin: string | string[];
+}
+export default function useWebSocket(props: SocketHookProps): {
+    emit: (event: any, data: any) => Socket<any, any> | undefined;
+    listen: (event: any, callback: Function) => void;
+    emitAndListen: (event: any, data: any, callback: Function) => Promise<void>;
+    stopListening: (event: string) => Promise<void>;
+};
+export {};
