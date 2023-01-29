@@ -3,7 +3,7 @@ import io, { Socket } from "socket.io-client";
 
 interface SocketHookProps {
   url: string;
-  socketServerPath: string;
+  socketServerPath: string | undefined;
   stateUpdateCallback: (message: any) => void;
   corsOrigin: string | string[];
 }
@@ -14,10 +14,11 @@ export default function useWebSocket(props: SocketHookProps) {
   const connect = () => {
     manager.current = io(props.url, {
       transports: ["websocket"],
+      autoConnect: false,
       reconnection: true,
       reconnectionDelay: 2000,
       reconnectionAttempts: 250,
-      path: props.socketServerPath,
+      path: props.socketServerPath || "",
       auth: {
         cors: {
           origin: props.corsOrigin || "*",
@@ -27,6 +28,8 @@ export default function useWebSocket(props: SocketHookProps) {
       },
     });
   };
+
+  const joinRoom = (name: any) => manager.current?.emit("join", name);
 
   const emit = (event: any, data: any) => manager.current?.emit(event, data);
 
@@ -83,5 +86,6 @@ export default function useWebSocket(props: SocketHookProps) {
     listen,
     emitAndListen,
     stopListening,
+    joinRoom,
   };
 }
